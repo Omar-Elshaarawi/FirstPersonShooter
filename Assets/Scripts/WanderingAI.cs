@@ -58,7 +58,7 @@ public class WanderingAI : MonoBehaviour
 
             // If the object hit was the player, shoot a fireball at the player
             // Otherwise, if the object is within the obstacle range, turn around
-            if (hitobject.GetComponent<PlayerCharacter>()) {
+            if (hitobject.GetComponent<PlayerCharacter>() && fireballPrefab != null) {
                 if (fireball == null) {
                     fireball = Instantiate(fireballPrefab) as GameObject;
                     fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);

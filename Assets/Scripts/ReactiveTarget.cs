@@ -54,14 +54,16 @@ public class ReactiveTarget : MonoBehaviour
             behavior.SetAlive(false);
         }
 
-        // Do the same for the SmartMovement script
-       // SmartMovement smart = GetComponent<SmartMovement>();
-       // if (smart != null) smart.ChangeMovementState(SmartMovement.MovementState.PAUSED);
+        ZombieAI zombie = GetComponent<ZombieAI>();
+        if (zombie != null)
+        {
+            zombie.SetAlive(false);
+        }
 
+        
         // Do the same for the FireballShooter script
         Fireball shooter  = GetComponent<Fireball>();
         if (shooter != null) shooter.ChangeFiringState(Fireball.FiringState.PAUSED);
-        //if (shooter != null) shooter.enabled = false;
 
 
         // Die
