@@ -60,7 +60,7 @@ public class ReactiveTarget : MonoBehaviour
             zombie.SetAlive(false);
         }
 
-        
+
         // Do the same for the FireballShooter script
         Fireball shooter  = GetComponent<Fireball>();
         if (shooter != null) shooter.ChangeFiringState(Fireball.FiringState.PAUSED);

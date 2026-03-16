@@ -18,22 +18,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: parasiteZombie_body_diffuse
-    second: {fileID: 2800000, guid: 9859535f9300bd74dab070016297d099, type: 3}
+    second: {fileID: 2800000, guid: d970bb5507a17d64894e9ecff0eed378, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: parasiteZombie_diffuse
-    second: {fileID: 2800000, guid: dae4d866fe759f14483c604f418df5ac, type: 3}
+    second: {fileID: 2800000, guid: 7e0d51a523a26e34589a11e79871862e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: parasiteZombie_normal
-    second: {fileID: 2800000, guid: 8c858f9c3f82fc84780af8c522d6a919, type: 3}
+    second: {fileID: 2800000, guid: 6d249502c1a1cc84380d6c2208da9fc8, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: parasiteZombie_specular
-    second: {fileID: 2800000, guid: 62af86909d916194ba0aaea5fa5a9525, type: 3}
+    second: {fileID: 2800000, guid: 00688a46cd7528a4197a5d795d9886ba, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -74,7 +74,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
