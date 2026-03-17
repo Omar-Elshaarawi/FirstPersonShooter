@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-
     [SerializeField] TMP_Text scoreLabel;
     [SerializeField] SettingsPopup settingsPopup;
 
@@ -24,27 +23,56 @@ public class UIController : MonoBehaviour
     private void OnEnemyHit()
     {
         _score += 1;
-        scoreLabel.text = _score.ToString();
+
+        if (scoreLabel != null)
+        {
+            scoreLabel.text = "Enemies Hit: " + _score;
+        }
+        else
+        {
+            Debug.LogWarning("UIController: scoreLabel is not assigned.");
+        }
     }
 
     private void Start()
     {
         _score = 0;
-        scoreLabel.text = _score.ToString();
 
-        settingsPopup.Close();
+        if (scoreLabel != null)
+        {
+            scoreLabel.text = "Enemies Hit: " + _score;
+        }
+        else
+        {
+            Debug.LogWarning("UIController: scoreLabel is not assigned.");
+        }
+
+        if (settingsPopup != null)
+        {
+            settingsPopup.Close();
+        }
+        else
+        {
+            Debug.LogWarning("UIController: settingsPopup is not assigned.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //scoreLabel.text = Time.realtimeSinceStartup.ToString();
-
+        // scoreLabel.text = Time.realtimeSinceStartup.ToString();
     }
 
-    public void OnOpenSettings() {
+    public void OnOpenSettings()
+    {
         Debug.Log("Opening settings ... ");
-        settingsPopup.Open();
 
+        if (settingsPopup != null)
+        {
+            settingsPopup.Open();
+        }
+        else
+        {
+            Debug.LogWarning("UIController: settingsPopup is not assigned.");
+        }
     }
 }
