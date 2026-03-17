@@ -55,11 +55,11 @@ public class RayShooter : MonoBehaviour, IToggleable
 
         GUI.Label(new Rect(posX, posY, size, size), "+");
 
-        // Draw a button
-        if (GUI.Button(new Rect(10, 10, 180, 20), "Click here for a free ipod!"))
-        {
-            Debug.Log("Button has been clicked!");
-        }
+        // Draw a buttonremoveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        //if (GUI.Button(new Rect(10, 10, 180, 20), "Click here for a free ipod!"))
+        //{
+         //   Debug.Log("Button has been clicked!");
+        //}
 
     }
 

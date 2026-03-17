@@ -17,6 +17,23 @@ public class SceneController : MonoBehaviour
     // Private field to track a single instance of the enemy
     private GameObject enemy;
 
+    void OnEnable()
+    {
+        Messenger.AddListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+    }
+    
+    void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+    }
+    
+    void OnEnemyHit()
+    {
+        score++;
+        scoreText.text = $"Enemies hit: {score}";
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +56,9 @@ public class SceneController : MonoBehaviour
             Vector3 enemySpawnLocation = new Vector3(0, 0.8f, 0) + gameObject.transform.position;
             enemy = SpawnNewEnemy(enemySpawnLocation);
 
-            // Increment the player's score by 1, then update the text
-            score++;
-            scoreText.text = $"Enemies hit: {score}";
+            // Increment the player's score by 1, then update the text  buggggggggggggggggggggggggggggggggggggggggggg
+            //score++;
+            //scoreText.text = $"Enemies hit: {score}";
         }
     }
 
