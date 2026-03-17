@@ -6,6 +6,7 @@ public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particles;
     [SerializeField] private int health = 1;
+    [SerializeField] private bool isBoss = false;
 
     private bool _isDead;
 
@@ -30,6 +31,15 @@ public class ReactiveTarget : MonoBehaviour
         if (_particles != null)
         {
             _particles.Play();
+        }
+
+        if (isBoss)
+        {
+            SceneController controller = FindObjectOfType<SceneController>();
+            if (controller != null)
+            {
+                controller.WinGame();
+            }
         }
 
         yield return new WaitForSeconds(1.5f);

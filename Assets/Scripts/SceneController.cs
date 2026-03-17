@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
 
     // Private field for the text object displaying the score
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private GameObject winScreen;
 
     // What prefab to spawn
     [SerializeField] GameObject enemyPrefab;
@@ -17,16 +18,18 @@ public class SceneController : MonoBehaviour
     // Private field to track a single instance of the enemy
     private GameObject enemy;
 
+    private bool gameWon = false;
+
     void OnEnable()
     {
         Messenger.AddListener(GameEvent.ENEMY_HIT, OnEnemyHit);
     }
-    
+
     void OnDisable()
     {
         Messenger.RemoveListener(GameEvent.ENEMY_HIT, OnEnemyHit);
     }
-    
+
     void OnEnemyHit()
     {
         score++;
@@ -50,12 +53,13 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If there isn't an enemy, spawn one
-        if (enemy == null) {
+        if (gameWon) return;
 
+        // If there isn't an enemy, spawn one
+        if (enemy == null)
+        {
             Vector3 enemySpawnLocation = new Vector3(0, 0.8f, 0) + gameObject.transform.position;
             enemy = SpawnNewEnemy(enemySpawnLocation);
-
         }
     }
 
@@ -70,5 +74,18 @@ public class SceneController : MonoBehaviour
         newObject.transform.Rotate(0, angle, 0);
 
         return newObject;
+    }
+
+    public void WinGame()
+    {
+        gameWon = true;
+        Debug.Log("YOU WIN");
+
+        if (winScreen != null)
+        {
+            winScreen.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
     }
 }
