@@ -5,7 +5,9 @@ using UnityEngine;
 public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particles;
-    private bool _alreadyHit;
+    [SerializeField] private int health = 1;
+
+    private bool _isDead;
 
     void Start()
     {
@@ -14,7 +16,7 @@ public class ReactiveTarget : MonoBehaviour
             _particles.Stop();
         }
 
-        _alreadyHit = false;
+        _isDead = false;
     }
 
     public IEnumerator Die()
@@ -38,9 +40,15 @@ public class ReactiveTarget : MonoBehaviour
 
     public void ReactToHit()
     {
-        if (_alreadyHit) return;
+        if (_isDead) return;
 
-        _alreadyHit = true;
+        health--;
+
+        if (health > 0) return;
+
+        _isDead = true;
+
+
         Debug.Log("Enemy was hit: " + gameObject.name);
         Messenger.Broadcast(GameEvent.ENEMY_HIT);
 

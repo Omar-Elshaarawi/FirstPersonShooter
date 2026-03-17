@@ -56,9 +56,6 @@ public class SceneController : MonoBehaviour
             Vector3 enemySpawnLocation = new Vector3(0, 0.8f, 0) + gameObject.transform.position;
             enemy = SpawnNewEnemy(enemySpawnLocation);
 
-            // Increment the player's score by 1, then update the text  buggggggggggggggggggggggggggggggggggggggggggg
-            //score++;
-            //scoreText.text = $"Enemies hit: {score}";
         }
     }
 

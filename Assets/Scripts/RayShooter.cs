@@ -54,8 +54,6 @@ public class RayShooter : MonoBehaviour, IToggleable
         float posY = cam.pixelHeight / 2 - size / 2;
 
         GUI.Label(new Rect(posX, posY, size, size), "+");
-
-        // Draw a buttonremoveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         //if (GUI.Button(new Rect(10, 10, 180, 20), "Click here for a free ipod!"))
         //{
          //   Debug.Log("Button has been clicked!");
