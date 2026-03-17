@@ -19,7 +19,8 @@ public class RayShooter : MonoBehaviour, IToggleable
     private float reloadingTimeLeft;
     private bool isReloading;
 
-    public void ToggleBehavior(bool b) {
+    public void ToggleBehavior(bool b)
+    {
         allowedToShoot = b;
     }
 
@@ -45,7 +46,8 @@ public class RayShooter : MonoBehaviour, IToggleable
     }
 
     // OnGUI method; for drawing a crosshair
-    private void OnGUI() {
+    private void OnGUI()
+    {
         int size = 24;
 
         float posX = cam.pixelWidth / 2 - size / 4;
@@ -53,10 +55,11 @@ public class RayShooter : MonoBehaviour, IToggleable
 
         GUI.Label(new Rect(posX, posY, size, size), "+");
 
-        // Draw a button
-        if (GUI.Button(new Rect(10, 10, 180, 20), "Click here for a free ipod!")) {
-            Debug.Log("Button has been clicked!");
-        }
+        // Draw a buttonremoveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        //if (GUI.Button(new Rect(10, 10, 180, 20), "Click here for a free ipod!"))
+        //{
+         //   Debug.Log("Button has been clicked!");
+        //}
 
     }
 
@@ -78,12 +81,14 @@ public class RayShooter : MonoBehaviour, IToggleable
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         // If this component is toggled off, then return immediately
         if (!allowedToShoot) return;
 
         // When the player left-clicks, perform a raycast
-        if (Input.GetMouseButtonDown(0) && ammoLeft > 0 && !EventSystem.current.IsPointerOverGameObject()) {
+        if (Input.GetMouseButtonDown(0) && ammoLeft > 0 && !EventSystem.current.IsPointerOverGameObject())
+        {
 
             // Consume 1 unit of ammo
             ammoLeft--;
@@ -97,28 +102,30 @@ public class RayShooter : MonoBehaviour, IToggleable
 
             //Create a raycast object to figure out what was hit
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit))
+            {
                 // temporary, print out the coords of where the ray hits
                 Debug.Log("Hit: " + hit.point);
 
                 // If the object hit was a reactive target, say that it was hit
                 // Otherwise, place down a sphere
                 GameObject hitobject = hit.transform.gameObject;
-                ReactiveTarget target = hitobject.GetComponent<ReactiveTarget>();
-                if (target != null) {
-                    //target.ReactToHit();
-                    //bugggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-                    //BUGGGG
-                    //if (target.deathAnim != null) Messenger.Broadcast(GameEvent.ENEMY_HIT);
+                ReactiveTarget target = hitobject.GetComponentInParent<ReactiveTarget>();
+                if (target != null)
+                {
                     target.ReactToHit();
-                    
+
                     Debug.Log("Target hit!");
-                } else {
+                }
+                else
+                {
                     StartCoroutine(SphereIndicator(hit.point));
                 }
             }
 
-        } else if (Input.GetMouseButtonDown(0) && ammoLeft == 0) {
+        }
+        else if (Input.GetMouseButtonDown(0) && ammoLeft == 0)
+        {
             // Reloading code goes here
 
             isReloading = true;
@@ -128,10 +135,12 @@ public class RayShooter : MonoBehaviour, IToggleable
 
         // If reloading, decrement time left
         // If that time reaches zero, exit reloading state and add more ammo
-        if (isReloading) {
+        if (isReloading)
+        {
             reloadingTimeLeft -= Time.deltaTime;
 
-            if (reloadingTimeLeft <= 0.0f) {
+            if (reloadingTimeLeft <= 0.0f)
+            {
                 reloadingTimeLeft = 0f;
                 isReloading = false;
                 ammoLeft = 5;
