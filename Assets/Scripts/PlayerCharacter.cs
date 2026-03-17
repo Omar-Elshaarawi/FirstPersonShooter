@@ -11,13 +11,22 @@ public class PlayerCharacter : MonoBehaviour
     // If the player's health reaches zero, these should be turned off
     private IToggleable[] toggleableComponents;
 
+    // ADDED: reference to the death screen
+    [SerializeField] private DeathScreenController deathScreen;
+
     // Start is called before the first frame update
     void Start()
     {
-        health = 5;
+        health = 10;
 
         // Get a reference to all toggleables
         toggleableComponents = GetComponentsInChildren<IToggleable>();
+
+        // ADDED: hide death screen at start
+        if (deathScreen != null)
+        {
+            deathScreen.gameObject.SetActive(false);
+        }
     }
 
     // Method to call to deal damage to the player
@@ -25,15 +34,33 @@ public class PlayerCharacter : MonoBehaviour
     {
         health -= damage;
 
-        health = Mathf.Clamp(health, 0, 5);
+        health = Mathf.Clamp(health, 0, 10);
 
         Debug.Log($"Health: {health}");
 
         // If health is zero, turn off moving and shooting
-        if (health == 0) {
-            foreach (IToggleable component in toggleableComponents) {
+        if (health == 0)
+        {
+            foreach (IToggleable component in toggleableComponents)
+            {
                 component.ToggleBehavior(false);
             }
+
+            // ADDED: show death screen
+            if (deathScreen != null)
+            {
+                deathScreen.ShowDeathScreen();
+            }
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetMaxHealth()
+    {
+        return 10;
     }
 }
