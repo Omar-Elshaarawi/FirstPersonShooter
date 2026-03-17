@@ -45,7 +45,7 @@ public class RayShooter : MonoBehaviour, IToggleable
         //Cursor.visible = false;
     }
 
-    // OnGUI method; for drawing a crosshair
+    /* OnGUI method; for drawing a crosshair
     private void OnGUI()
     {
         int size = 24;
@@ -61,7 +61,7 @@ public class RayShooter : MonoBehaviour, IToggleable
          //   Debug.Log("Button has been clicked!");
         //}
 
-    }
+    }*/
 
     // Coroutine
     // Place down a sphere at a location, which then disappears after one second
